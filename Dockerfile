@@ -2,7 +2,7 @@ FROM 0x01be/coin as coin
 
 FROM alpine as builder
 
-RUN apk add --no-cache --virtual openroad-build-dependencies \
+RUN apk add --no-cache --virtual lemon-build-dependencies \
     git \
     build-base \
     cmake \
@@ -29,11 +29,15 @@ RUN tar xzf lemon-${LEMON_VERSION}.tar.gz
 
 WORKDIR /lemon-${LEMON_VERSION}/build
 
-RUN apk add --no-cache --virtual openroad-edge-build-dependencies \
+RUN apk add --no-cache --virtual lemon-edge-build-dependencies \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
     glpk-dev
+
+RUN apk add --no-cache --virtual lemon-doc-dependencies \
+    doxygen \
+    graphviz
 
 RUN cmake \
     -DCMAKE_INSTALL_PREFIX=/opt/lemon \
