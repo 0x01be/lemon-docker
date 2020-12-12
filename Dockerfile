@@ -1,7 +1,7 @@
 FROM 0x01be/lemon:build as build
 FROM 0x01be/coin as coin
 
-FROM alpine as builder
+FROM 0x01be/base
 
 RUN apk add --no-cache --virtual lemon-runtime-dependencies \
     qt5-qtbase \
