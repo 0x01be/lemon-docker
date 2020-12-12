@@ -1,6 +1,6 @@
 FROM 0x01be/coin as coin
 
-FROM alpine as builder
+FROM 0x01be/base as build
 
 RUN apk add --no-cache --virtual lemon-build-dependencies \
     git \
